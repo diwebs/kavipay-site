@@ -6,7 +6,8 @@ import SparkleOverlay from './SparkleOverlay';
 // replace the placeholder image with your own card image by
 // dropping a file at `src/assets/kavi.png` or updating the path
 // note: components are in src/app/components, so go up two levels
-import physicalCardImg from '../../assets/kavi_visual.png';
+import physicalCardImg from '/../assets/kavi_visual.png';
+import card2Img from '../assets/card2.png';
 // const physicalCardImg = '';
 
 export function CardShowcase() {
@@ -79,6 +80,7 @@ export function CardShowcase() {
 
                 {/* Card content */}
                 <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                <img src={card2Image} alt="Card 2" className="w-full h-auto rounded-lg" />
                   <div className="flex justify-between items-start">
                     <div className="flex items-center space-x-2">
                       <Smartphone className="w-8 h-8 text-white/80" />
