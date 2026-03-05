@@ -3,12 +3,9 @@ import { useRef, useState } from 'react';
 import { Smartphone, CreditCard as CreditCardIcon } from 'lucide-react';
 import SparkleOverlay from './SparkleOverlay';
 
-// replace the placeholder image with your own card image by
-// dropping a file at `src/assets/kavi.png` or updating the path
-// note: components are in src/app/components, so go up two levels
-import physicalCardImg from '/../assets/kavi_visual.png';
-import card2Img from '../assets/card2.png';
-// const physicalCardImg = '';
+// Correct imports for images
+import physicalCardImg from '../../assets/kavi_visual.png';
+import card2Img from '../../assets/card2.png';
 
 export function CardShowcase() {
   const ref = useRef(null);
@@ -18,13 +15,15 @@ export function CardShowcase() {
   return (
     <section id="cards" className="relative py-24 bg-black overflow-hidden">
       <SparkleOverlay count={8} color="#06b6d4" style="flowing" />
-      {/* Background */}
+
+      {/* Background blurs */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#1E63C6]/20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#0F8A8C]/20 rounded-full blur-3xl" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Title Section */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
@@ -57,30 +56,30 @@ export function CardShowcase() {
             className="relative group"
           >
             <div className="relative">
-              {/* Card */}
               <motion.div
                 className="relative aspect-[1.586/1] rounded-3xl overflow-hidden"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
-                style={{
-                  transformStyle: 'preserve-3d',
-                }}
+                style={{ transformStyle: 'preserve-3d' }}
               >
-                {/* Card background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1E63C6] via-[#1476B8] to-[#0F8A8C]" />
-                
-                {/* Animated gradient overlay */}
+                {/* Virtual Card Background Image */}
+                <img
+                  src={card2Img}
+                  alt="Virtual Card"
+                  className="absolute inset-0 w-full h-full object-cover rounded-3xl"
+                />
+
+                {/* Gradient Overlay */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"
+                  className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-3xl"
                   animate={{
                     opacity: hoveredCard === 'virtual' ? [0.2, 0.4, 0.2] : 0.2,
                   }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
 
-                {/* Card content */}
+                {/* Card Content */}
                 <div className="absolute inset-0 p-8 flex flex-col justify-between">
-                <img src={card2Image} alt="Card 2" className="w-full h-auto rounded-lg" />
                   <div className="flex justify-between items-start">
                     <div className="flex items-center space-x-2">
                       <Smartphone className="w-8 h-8 text-white/80" />
@@ -108,12 +107,10 @@ export function CardShowcase() {
                   </div>
                 </div>
 
-                {/* Holographic effect */}
+                {/* Holographic shine */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/30 to-white/0"
-                  style={{
-                    backgroundSize: '200% 200%',
-                  }}
+                  className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/30 to-white/0 rounded-3xl"
+                  style={{ backgroundSize: '200% 200%' }}
                   animate={{
                     backgroundPosition: hoveredCard === 'virtual' ? ['0% 0%', '100% 100%'] : '0% 0%',
                   }}
@@ -121,11 +118,11 @@ export function CardShowcase() {
                 />
               </motion.div>
 
-              {/* Glow effect */}
+              {/* Glow Effect */}
               <div className="absolute -inset-1 bg-gradient-to-br from-[#1E63C6] to-[#0F8A8C] rounded-3xl opacity-0 group-hover:opacity-50 blur-2xl transition-opacity duration-500 -z-10" />
             </div>
 
-            {/* Description */}
+            {/* Virtual Card Description */}
             <motion.div
               className="mt-8"
               initial={{ opacity: 0, y: 20 }}
@@ -166,30 +163,29 @@ export function CardShowcase() {
             className="relative group"
           >
             <div className="relative">
-              {/* Card */}
               <motion.div
                 className="relative aspect-[1.586/1] rounded-3xl overflow-hidden"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
-                style={{
-                  transformStyle: 'preserve-3d',
-                }}
+                style={{ transformStyle: 'preserve-3d' }}
               >
-                {/* Card image (use your own graphic by replacing the imported file) */}
+                {/* Physical Card Image */}
                 <img
                   src={physicalCardImg}
                   alt="Physical card"
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover rounded-3xl"
                 />
 
-                {/* retain optional overlay effects if desired */}
+                {/* Overlays */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#1E63C6]/30 via-[#1476B8]/20 to-[#0F8A8C]/30" />
-                <div className="absolute inset-0 opacity-20" style={{
-                  backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(20, 118, 184, 0.3) 1px, transparent 1px)',
-                  backgroundSize: '3px 3px',
-                }} />
-
-                {/* Animated gradient overlay */}
+                <div
+                  className="absolute inset-0 opacity-20"
+                  style={{
+                    backgroundImage:
+                      'radial-gradient(circle at 20% 50%, rgba(20, 118, 184, 0.3) 1px, transparent 1px)',
+                    backgroundSize: '3px 3px',
+                  }}
+                />
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-br from-[#1E63C6]/30 via-transparent to-[#0F8A8C]/30"
                   animate={{
@@ -198,7 +194,7 @@ export function CardShowcase() {
                   transition={{ duration: 2, repeat: Infinity }}
                 />
 
-                {/* Card content */}
+                {/* Card Content */}
                 <div className="absolute inset-0 p-8 flex flex-col justify-between">
                   <div className="flex justify-between items-start">
                     <div className="text-3xl font-bold bg-gradient-to-r from-[#1E63C6] via-[#1476B8] to-[#0F8A8C] bg-clip-text text-transparent">
@@ -208,20 +204,12 @@ export function CardShowcase() {
                       <div className="w-8 h-6 bg-gradient-to-br from-[#1476B8] to-[#0F8A8C] rounded" />
                     </div>
                   </div>
-
-                  <div>
-                    
-                    <div className="flex justify-between items-end">
-                    </div>
-                  </div>
                 </div>
 
-                {/* Shine effect with theme colors */}
+                {/* Shine Effect */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-transparent via-[#1476B8]/30 to-transparent"
-                  style={{
-                    backgroundSize: '200% 200%',
-                  }}
+                  className="absolute inset-0 bg-gradient-to-br from-transparent via-[#1476B8]/30 to-transparent rounded-3xl"
+                  style={{ backgroundSize: '200% 200%' }}
                   animate={{
                     backgroundPosition: hoveredCard === 'physical' ? ['0% 0%', '100% 100%'] : '0% 0%',
                   }}
@@ -229,11 +217,11 @@ export function CardShowcase() {
                 />
               </motion.div>
 
-              {/* Glow effect */}
+              {/* Glow */}
               <div className="absolute -inset-1 bg-gradient-to-br from-[#1E63C6] to-[#0F8A8C] rounded-3xl opacity-0 group-hover:opacity-50 blur-2xl transition-opacity duration-500 -z-10" />
             </div>
 
-            {/* Description */}
+            {/* Physical Card Description */}
             <motion.div
               className="mt-8"
               initial={{ opacity: 0, y: 20 }}
