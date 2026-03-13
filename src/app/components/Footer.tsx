@@ -7,7 +7,6 @@ const footerLinks = {
   Product: [
     { name: 'Features', path: '#features' },
     { name: 'Cards', path: '#cards' },
-    { name: 'Pricing', path: '/product#pricing' },
     { name: 'Security', path: '#security' },
   ],
   Company: [

@@ -199,9 +199,8 @@ function PricingSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`relative bg-white/5 backdrop-blur-sm border rounded-2xl p-8 ${
-                plan.popular ? 'border-[#1476B8] shadow-lg shadow-[#1476B8]/20' : 'border-white/10'
-              }`}
+              className={`relative bg-white/5 backdrop-blur-sm border rounded-2xl p-8 ${plan.popular ? 'border-[#1476B8] shadow-lg shadow-[#1476B8]/20' : 'border-white/10'
+                }`}
             >
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-[#1E63C6] to-[#0F8A8C] text-white text-sm font-semibold rounded-full">
@@ -219,11 +218,10 @@ function PricingSection() {
                 ))}
               </ul>
               <button
-                className={`w-full px-6 py-3 rounded-xl font-semibold transition-all ${
-                  plan.popular
+                className={`w-full px-6 py-3 rounded-xl font-semibold transition-all ${plan.popular
                     ? 'bg-gradient-to-r from-[#1E63C6] to-[#0F8A8C] text-white hover:opacity-90'
                     : 'bg-white/10 border border-white/20 text-white hover:bg-white/20'
-                }`}
+                  }`}
               >
                 Get Started
               </button>
@@ -314,7 +312,6 @@ export default function Product() {
       />
       <FeaturesSection />
       <CardsSection />
-      <PricingSection />
       <SecuritySection />
       <Footer />
     </div>
